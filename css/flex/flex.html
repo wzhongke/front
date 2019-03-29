@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <style>
+        .container {
+            background-color: rgb(87, 39, 75);
+            height: 20px;
+            width: 800px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .item {
+            background-color: peru;
+            height: 300px;
+          
+            text-align: center;
+            font-size: 40px;
+            color:red;
+        }
+    
+        .item1 {
+            order: 3;
+        }
+
+        .item2 {
+            order: 2;
+        }
+        .item3 {
+            order: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1" style="width: 200px">1</div>
+        <div class="item item2" style="width: 100px">2</div>
+        <div class="item item3" style="width: 300px">3</div>
+    </div>
+</body>
+</html>

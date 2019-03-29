@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>directive</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <input type="text" v-focus />
+        <nav-link></nav-link>
+    </div>
+    <div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+    <script>
+        Vue.directive('focus', {
+            inserted: function (el) {
+                el.focus()
+            }
+        })
+        
+        Vue.component("nav-link", {
+            directives: {
+                focus: {
+                    // 指令的定义
+                    inserted: function (el) {
+                    el.focus()
+                    }
+                }
+            },
+            template: `<input v-focus type="text"/>`
+        })
+
+        new Vue({
+            el: '#example',
+            data: function() {
+                return {
+                    user: {name:"wang"}
+                }
+            }
+        })
+
+        new Vue({
+            el: '#hook-arguments-example',
+            directives: {
+                demo: {
+                    bind: function (el, binding, vnode) {
+                        var s = JSON.stringify
+                        el.innerHTML =
+                        'name: '       + s(binding.name) + '<br>' +
+                        'value: '      + s(binding.value) + '<br>' +
+                        'expression: ' + s(binding.expression) + '<br>' +
+                        'argument: '   + s(binding.arg) + '<br>' +
+                        'modifiers: '  + s(binding.modifiers) + '<br>' +
+                        'vnode keys: ' + Object.keys(vnode).join(', ')
+                    }
+                }
+            },
+            data: {
+                message: 'hello!'
+            }
+        })
+
+    </script>
+</body>
+</html>

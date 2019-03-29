@@ -1,0 +1,57 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<script>
+      !function(a){function c(){var d=e.getBoundingClientRect().width;750<d&&(d=750);a.rem=d/18.75;e.style.fontSize=a.rem+"px"}var e=a.document.documentElement,b;a.addEventListener("resize",function(){clearTimeout(b);b=setTimeout(c,300)},!1);a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(b),b=setTimeout(c,300))},!1);c()}(window);
+          </script>
+<link rel="stylesheet" type="text/css" href="/css/share.min.css?ver={{ver}}" />
+{% endblock %}
+{% block body %}
+    <div class="hide">
+            <img src="/img/logo-512512.png"/>
+                </div>
+<div class="container">
+  <div class="image-wrapper"></div>
+  <div class="content">
+      <p class="desicion">下决心</p>
+      <p class="already">已经坚持0天</p>
+  </div>
+  <div class="circle">
+      <div class="circle-top">
+          <h4>0</h4>
+          <p>押注（元）</p>
+      </div>
+      <div class="circle-bottom">
+          <p>已经领0元</p>
+      </div>
+  </div>
+  <div class="statistic">今日领取0元，累积领取0元</div>
+  <div class="info clearfix">
+      <div><h4 id="total_money">0元</h4><p>决心押注</p></div>
+      <div><h4 id="total_day">7天</h4><p>决心周期</p></div>
+      <div><h4 id="eachday_mondy">2元</h4><p>平均每日可领取</p></div>
+      <div><h4 id="remind_time">5:50</h4><p>每日提醒时间</p></div>
+  </div>
+</div>
+<div class="footer">
+  <div class="logo-wrapper">
+      <img src="/img/logo.png"  alt="logo"/>
+  </div>
+  <div class="text">
+      <h4>下决心</h4>
+      <p>打卡领钱，改变自己</p>
+  </div>
+  <a class="download-btn" href="https://itunes.apple.com/cn/app/xia-jue-xin/id1115154013?mt=8">立即下载</a>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  var global = {
+    decision_id: '{{decision_id}}'
+  }
+</script>
+<script src="/js/share.min.js?ver={{ver}}"></script>
+{% endblock %}
+

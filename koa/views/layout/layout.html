@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="/img/logo.png" type="image/png">
+    <link rel="icon" href="/img/logo.png" type="image/png">
+    {% block header %}{% endblock %}
+  </head>
+  <body style="max-width: 750px;margin:0 auto;">
+    {% block body %}{% endblock %}
+    <script src="/lib/zepto.min.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

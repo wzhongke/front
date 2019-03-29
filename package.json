@@ -1,0 +1,41 @@
+{
+  "name": "xjx.cn",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./app/app.js",
+    "c": "webpack --config build/webpack.config.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "static": "stylus -w static_src/css/main.styl -o static/css/main.css & watch 'cp -rf static_src/js/* static/js/' static_src/js/ & watch 'cp -rf static_src/img static/img' static_src/img/",
+    "build": "stylus static_src/css/main.styl -o static/css/main.css && cp -rf static_src/img static/img && for i in `ls static_src/js`;do node_modules/.bin/uglifyjs --compress --mangle -o static/js/$i -- static_src/js/$i; done"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/three": "^0.92.12",
+    "exif-js": "^2.3.0",
+    "koa": "^2.3.0",
+    "koa-logger": "^3.0.1",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "koa-views": "^6.0.2",
+    "nunjucks": "^3.0.1",
+    "pm2": "^2.9.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "nodemon": "^1.11.0",
+    "postcss-loader": "^2.0.6",
+    "style-loader": "^0.18.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "uglify-js": "^3.2.0",
+    "watch": "^1.0.2",
+    "webpack": "^3.5.4",
+    "webpack-assets-manifest": "^1.0.0",
+    "zepto": "^1.2.0"
+  }
+}

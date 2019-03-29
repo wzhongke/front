@@ -1,0 +1,52 @@
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="tutorial-page">
+    <div class="item">
+      <text style="color:{{textColor}}" onclick="changInlineStyle">item1</text>
+    </div>
+    <div class="item">
+      <text>item2</text>
+    </div>
+  </div>
+</template>
+
+<style>
+ .tutorial-page {
+    /* 交叉轴居中 */
+    align-items: flex-start;
+    /* 纵向排列 */
+    flex-direction: row;
+    justify-content: center;
+  }
+  .tutorial-page > .item {
+    /* 有剩余空间时，允许被拉伸 */
+    /*flex-grow: 1;*/
+    /* 空间不够用时，不允许被压缩 */
+    /* 主轴居中 */
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    background-color: #FF0000;
+  }
+</style>
+
+<script>
+  export default {
+    private: {
+      text: 'here you are',
+      textColor: '#0faeff'
+    },
+    /**
+     * 当用户点击菜单按钮时触发，调用app中定义的方法showMenu
+     * 注意：使用加载器测试`创建桌面快捷方式`功能时，请先在`系统设置`中打开`应用加载器`的`桌面快捷方式`权限
+     */
+    onMenuPress() {
+      this.$app.$def.showMenu()
+    },
+    changInlineStyle () {
+        console.log(this.textColor)
+        this.textColor = "#FFFFFF"
+    }
+  }
+</script>

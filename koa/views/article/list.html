@@ -1,0 +1,19 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<script>
+      !function(a){function c(){var d=e.getBoundingClientRect().width;750<d&&(d=750);a.rem=d/7.5;e.style.fontSize=a.rem+"px"}var e=a.document.documentElement,b;a.addEventListener("resize",function(){clearTimeout(b);b=setTimeout(c,300)},!1);a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(b),b=setTimeout(c,300))},!1);c()}(window);
+          </script>
+<link rel="stylesheet" type="text/css" href="/css/main.css?ver={{ver}}" />
+{% endblock %}
+
+{% block body %}
+<div class="page-list">
+  <!-- list loading -->
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/js/list.js?ver={{ver}}"></script>
+{% endblock %}

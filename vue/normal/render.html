@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>render</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <anchored-heading :level="1" id='example'>Hello world!</anchored-heading>
+    <script>
+         var getChildrenTextContent = function (children) {
+            return children.map(function (node) {
+                return node.children ? getChildrenTextContent(node.children) : node.text
+            }).join('')
+        }
+
+        Vue.component('anchored-heading', {
+            render: function (createElement) {
+                var headingId = getChildrenTextContent(this.$slots.default)
+                    .toLowerCase().replace(/\W+/g, '-').replace(/(^\-|\-$)/g, '');
+                return createElement(
+                    'h' + this.level,
+                    [
+                        createElement('a', {
+                            attrs: {
+                                name: headingId,
+                                href: '#' + headingId
+                            }
+                        }, this.$slots.default),
+                        createElement('p', {
+                            'class': {
+                                clamp: true
+                            },
+                            style: {
+                                'line-height': '200px'
+                            },
+                            on: {
+                                click: function () {alert('click')}
+                            }
+                        }, this.$slots.default)
+                    ]
+                )
+            },
+            props: {
+                level: {
+                    type: Number, 
+                    required: true
+                }
+            }
+        })
+
+        new Vue({
+            el: '#example'
+        })
+
+       
+    </script>
+</body>
+</html>

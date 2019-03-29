@@ -1,0 +1,27 @@
+{
+  "name": "es6",
+  "version": "1.0.1",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.86.0"
+  },
+  "devDependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "latest"
+          ]
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<script>
+      !function(a){function c(){var d=e.getBoundingClientRect().width;750<d&&(d=750);a.rem=d/7.5;e.style.fontSize=a.rem+"px"}var e=a.document.documentElement,b;a.addEventListener("resize",function(){clearTimeout(b);b=setTimeout(c,300)},!1);a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(b),b=setTimeout(c,300))},!1);c()}(window);
+          </script>
+<link rel="stylesheet" type="text/css" href="/css/main.css?ver={{ver}}" />
+{% endblock %}
+
+{% block body %}
+<div class="article-header">
+  <div class="a-wrapper">
+    <!--div class="icon">
+      <img src="" />
+    </div-->
+    <div class="d-meta">
+      <div class="d-title"></div>
+      <div class="d-desc"></div>
+    </div>
+    <button class="d-btn">加入</button>
+  </div>
+</div>
+<div class="article">
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  var global = {
+    doc_id: '{{doc_id}}'
+  }
+</script>
+<script src="/js/article.js?ver={{ver}}"></script>
+{% endblock %}

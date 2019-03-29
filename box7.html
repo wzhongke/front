@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <style>
+        div.box {
+            width: 500px;
+        }
+
+        div.box p {
+            width: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            background-color: gray;
+            text-align: center;
+        }
+
+        li {margin-bottom: 20px;background-color: darkred;} 
+        ul {margin-bottom: -15px;}
+        h1 {margin-top: -18px;background-color: dimgrey;}
+
+        div.vertical {
+            width: 200px;
+            height: 6em;
+            background-color: yellowgreen;
+            border: 1px solid;
+        }
+
+        span.vertical {
+            line-height: 20px;
+            vertical-align: middle;
+            background-color: wheat;
+        }
+        
+        div.vertical p {
+            margin: 25% auto;
+            width: 40px;
+            height: 50%;
+            background-color: rebeccapurple;
+            
+        }
+
+        span.border {border: 1px dashed black;background-color:darkgray;}
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <p>1234</p>
+    </div>
+    <p style="font-size: 12px; line-height: 12px;vertical-align:middle;">
+        This is text, <em>some of which is emphasized</em>,<br>
+        plus other text that is <strong style="font-size: 24px;line-height:1.8em; border: 5px solid blue;">strong</strong>
+        and <span style="vertical-align: top; line-height: 1em;">tall</span> and is<br> larger than the surrounding text.
+        </p>
+    <img src="images/盒模型.png" style="display: block; width: 250px; height:300px; margin: 0;">
+    <img src="images/盒模型.png" style="display: block; width: 50px; margin: 0;">
+    <img src="images/盒模型.png" style="display: block; width: 100px; margin: 0;">
+    <span class="vertical">    <img src="images/盒模型.png" style="width: 50px; "/>other text;</span>
+
+
+    <ul>
+        <li>a list item</li>
+        <li>another list item</li>
+    </ul>
+    <h1>this is a h1 element.</h1>
+
+    <div class="vertical">
+        <p>居中</p>
+    </div>
+
+    <span class="border">this is a <em>em </em>span with a border. this is a span with a border. this is a span with a border. this is a span with a border. this is a span with a border. this is a span with a border.this is a span with a border.this is a span with a border.</span>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+{
+    "package": "com.application.demo",
+    "name": "demo",
+    "versionName": "1.0.1",
+    "versionCode": "2",
+    "minPlatformVersion": "101",
+    "icon": "/Common/logo.png",
+    "features": [
+        {
+            "name": "system.prompt"
+        },
+        {
+            "name": "system.router"
+        },
+        {
+            "name": "system.shortcut"
+        }
+    ],
+    "permissions": [
+        {
+            "origin": "*"
+        }
+    ],
+    "config": {
+        "logLevel": "debug"
+    },
+    "router": {
+        "entry": "Demo",
+        "pages": {
+            "Demo": {
+                "component": "index"
+            },
+            "DemoDetail": {
+                "component": "index"
+            },
+            "About": {
+                "component": "index"
+            }
+        }
+    },
+    "display": {
+        "titleBarBackgroundColor": "#f2f2f2", 
+        "titleBarTextColor": "#414141",
+        "menu": true,
+        "pages": {
+            "Demo": {
+                "titleBarText": "我的示例页1234",
+                "menu": false
+            },
+            "DemoDetail": {
+                "titleBarText": "详情页。。"
+            },
+            "About": {
+                "menu": false
+            }
+        }
+    }
+}

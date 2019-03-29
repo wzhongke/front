@@ -1,0 +1,86 @@
+{% extends "layout/layout.html" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block header %}
+<script>
+      !function(a){function c(){var d=e.getBoundingClientRect().width;750<d&&(d=750);a.rem=d/18.75;e.style.fontSize=a.rem+"px"}var e=a.document.documentElement,b;a.addEventListener("resize",function(){clearTimeout(b);b=setTimeout(c,300)},!1);a.addEventListener("pageshow",function(a){a.persisted&&(clearTimeout(b),b=setTimeout(c,300))},!1);c()}(window);
+          </script>
+<link rel="stylesheet" type="text/css" href="/css/daily.css?ver={{ver}}" />
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="image-wrapper">
+      <img src="https://media-image1.baydn.com/people%2Favatar%2Fe1d016eca343c78e27600170848b9646.png@128w_128h"/>
+  </div>
+  <div class="content">
+      <p class="desicion">下决心</p>
+      <div class="days-wrapper">
+        <p class="already">决心日志 - 第2天</p>
+      <div class="line"></div>
+    </div>
+  </div>
+  <p class="quotation">“</p>
+  <p class="description">我所理解的生活就是和喜欢的一切在一起</p>
+  <div class="daily-img">
+      
+  </div>
+  <p class="quotation quotation-bottom">”</p>
+</div>
+<div class="footer">
+  <div class="logo-wrapper">
+      <img src="/img/logo.png"  alt="logo"/>
+  </div>
+  <div class="text">
+      <h4>下决心</h4>
+      <p>打卡领钱，改变自己</p>
+  </div>
+  <a class="download-btn" href="https://itunes.apple.com/cn/app/xia-jue-xin/id1115154013?mt=8">立即下载</a>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  var global = {
+    decision_id: '{{decision_id}}'
+  }
+</script>
+<script>
+  function toDecimal(x) { 
+    var f = parseFloat(x); 
+    if (isNaN(f)) { 
+        return 0; 
+    } 
+    f = Math.round(x*100)/100; 
+    return f; 
+} 
+
+$.ajax({
+    type: 'GET',
+    url: '/api/decisiondiary/diaryforshare',
+    data: $.param({'decision_id' : global.decision_id, 'token': '828cdbcfbd3abc05ae9ce7cbbc306bd4', 'n': 2}),
+    dataType: 'json',
+    success: function(data, status, xhr) {
+        if (data == null || data.data.daily != undefined) return ;
+        
+        var daily = data.data.diary[0];
+
+        if (daily) {
+          var userInfo = daily.user_info;
+          var decisionInfo = daily.decision_info;
+          var basic = daily.basic;
+          $(".image-wrapper img").attr('src', userInfo.wechat_headimgurl);
+          $(".content .desicion").text(userInfo.username + "下决心“" + decisionInfo.name + "”");
+          $(".already").text("决心日志 - 第" +  decisionInfo.total_days + "天");
+          $(".description").text(basic.content);
+          if (basic.img && length(basic.img) > 0) {
+            $(".daily-img").html("<img src=\""+ basic.img[0] + "\" onerror=\"this.parentNode.style.display='none'\" />")
+          }
+        }
+    },
+    error: function() {
+        console.log('error');
+    }
+});
+</script>
+{% endblock %}
+

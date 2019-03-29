@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 14px;
+        }
+        div {
+            line-height: 1.3;
+        }
+        div > p.font {
+            font-size: 20px;
+        }
+        p.margin {
+            margin: 0;
+            text-indent: -4em;
+            padding-left: 4em;
+            text-align: start;
+            line-height: 150%;
+            font-size: 14px;
+        }
+        a {
+            display: block;
+            text-indent: 2em;
+        }
+
+        #vertical .super {
+            vertical-align: super;
+        }
+
+        #vertical .sub {
+            vertical-align: sub;
+        }
+
+        #vertical .bottom {
+            vertical-align: bottom;
+        }
+
+        p.spread {word-spacing: 0.5em;letter-spacing: 0.5em;}
+        p.tight {word-spacing: −0.5em;} 
+        p.base {word-spacing: normal;} 
+        p.norm {word-spacing: 0;}
+
+        p.emph {text-decoration: underline;} 
+        strong {color: gray; text-decoration: none;}
+        p.topper {text-decoration: overline;} 
+        p.old {text-decoration: line-through;}
+        p.annoy {text-decoration: blink;} 
+        p.combine {text-decoration: underline overline line-through;}
+
+        p.shadow {color: white; text-shadow: 0 0 4px black;}
+        p::after {content: ' ' attr(class);}
+    </style>
+</head>
+<body>
+    <div>
+        <p class="font">this is a text about html<br/>this is a text about html</p>
+    </div>
+    <a>this is a link</a>
+    <div id="vertical">
+        <p><span class="super">this is super</span> this is the parent baseline <span class="sub">this is sub</span>
+            this is p's baseline <span class="bottom">this is bottom</span>
+        </p>
+    </div>
+    <p class="spread">The spaces between words in this paragraph will be increased by 0.5em. 中文呢？</p>
+    <p class="tight">The spaces between words in this paragraph will be decreased by 0.5em.</p>
+    <p class="base">The spaces between words in this paragraph will be normal.</p> 
+    <p class="norm">The spaces between words in this paragraph will be normal.</p>
+
+    <p class="emph">underline <strong>strong</strong></p>
+    <p class="topper">overline</p>
+    <p class="old">line-through</p>
+    <p class="annoy">blink</p>
+    <p class="combine">underline overline line-through</p>
+
+    <p class="shadow">this is a shadow</p>
+    <p class="shadowt">this is a shadowt</p>
+
+    <span><p>this is a test.</p> another </span> 
+</body>
+</html>
+

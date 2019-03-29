@@ -1,0 +1,120 @@
+
+//  使用 $ 定义变量
+$blue : #1875e7;
+$side : left;
+
+div {
+    color: $blue;
+    // 如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。
+    margin-#{$side}: 5px;
+}
+
+
+// 使用计算功能
+$var: 2;
+body {
+    margin: (14px/2);
+    top: 50px + 100px;
+    right: $var * 10%;
+}
+
+
+// 选择器嵌套
+div {
+    h1 {
+        color: $blue;
+    }
+}
+
+// 属性嵌套
+div {
+    // border-color
+    border : {
+        color: $blue;
+    }
+}
+
+// 可以使用 & 引用父元素
+div {
+    a {
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+// 继承
+.class1 {
+    border: 1px solid #ddd;
+}
+
+.class2 {
+    @extend .class1;
+    font-size: 120%;
+}
+
+// Mixin有点像C语言的宏（macro），是可以重用的代码块。
+@mixin floatLeft {
+    float: left;
+    margin-left: 10px;
+}
+
+// mixin 可以指定参数和默认值
+@mixin floatValue($value: 10px) {
+    float: left;
+    margin-right: $value;
+}
+
+@mixin rounded($vert, $horz, $radius: 10px) {
+    border-#{$vert}-#{$horz}-radius: $radius;
+    -moz-border-radius-#{$vert}#{$horz}: $radius;
+    -webkit-border-#{$vert}-#{$horz}-radius: $radius;
+}
+
+// 调用如下
+div {
+    @include floatLeft;
+    @include floatValue(20px);
+    @include rounded(top, left);
+}
+
+// 条件语句
+p {
+    @if 1 + 1 == 2 { border: 1px solid; }
+    @if 5 < 3 { border: 2px dotted; }
+    @if lightness($blue) > 30% {
+　　　　background-color: #000;
+    } @else {
+　　　　background-color: #fff;
+    }
+}
+
+// 循环语句
+@for $i from 1 to 10 {
+    .border-#{$i} {
+        border: #{$i}px solid blue;
+    }
+}
+
+$i: 6;
+@while $i > 0 {
+    .item-#{$i} { width: 2em * $i; }
+    $i: $i - 2;
+}
+
+@each $member in a, b, c, d {
+    .#{$member} {
+        background-image: url("/image/#{$member}.jpg");
+    }
+}
+
+// 自定义函数
+@function double($n) {
+    @return $n * 2;
+}
+
+#sidebar {
+    width: double(5px);
+}
+
+@import "import.scss";

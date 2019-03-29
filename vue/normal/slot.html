@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Props</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <navigation-link url="#">
+            <span>Is That </span>Your Profile?
+        </navigation-link>
+        <navigation-link url="/profile">
+            Logged in as {{ user.name }}
+        </navigation-link>
+    </div>
+
+    <script>
+        Vue.component('navigation-link', {
+            props: ['url'],
+            template: `
+            <a v-bind:href="url" class="nav-link">
+                <slot></slot>
+            </a>
+            `
+        })
+
+        new Vue({
+            el: '#example',
+            data: function() {
+                return {
+                    user: {name:"wang"}
+                }
+            }
+        })
+    </script>
+</body>
+</html>

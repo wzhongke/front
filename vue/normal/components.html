@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <object align=middle classid="CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95" class=OBJECT id=MediaPlayer width=196 height=196>  
+        <param name=ShowStatusBar value=0>  
+        <param name=Filename value="http://202.116.*.*/video/story/chinese/hynh/b.wmv">  
+            <embed type=application/x-oleobject codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701" >  
+        </embed>  
+    </object>  
+    <div id="components">
+        <button-counter></button-counter>
+    </div>
+    <div id="components1">
+    <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        ></blog-post>
+    </div>
+    <div id="components3">
+        <div :style="{ fontSize: postFontSize + 'em' }">
+            <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-bind:button="button"
+                v-on:enlarge-text="postFontSize += 0.1"
+            ></blog-post>
+        </div>
+    </div>
+    <div id="components4">
+        <base-checkbox v-model="lovingVue"></base-checkbox>
+        <base-checkbox v-model="lovingVue"></base-checkbox>
+    </div>
+    <script>
+        Vue.component('base-checkbox', {
+            model: {
+                prop: 'checked',
+                event: 'change'
+            },
+            props: {
+                checked: Boolean
+            },
+            template: `
+                <input type="checkbox" v-bind:checked="checked" v-on:change="check($event)">
+            `,
+            methods: {
+                check: function (event) {
+                    console.log(event);
+                    this.$emit('change', event.target.checked)
+                }
+            }
+        })
+
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button @click="count++">你点击了 {{count}} 次 </button>'
+        })
+        Vue.component('blog-post', {
+            props: ['post', 'button'],
+            template: `
+                <div class="blog-post">
+                    <h3>{{ post.title }}</h3>
+                    <button @click="$emit('enlarge-text')" v-if="button"> 放大文本 </button>
+                    <div v-html="post.content"></div>
+                </div>
+            `
+        })
+        var vm = new Vue({
+            el: '#components1',
+            data: {
+                posts: [
+                    { id: 1, title: '我的 Vue 旅程' },
+                    { id: 2, title: '用 Vue 写博客' },
+                    { id: 3, title: 'Vue 如此有趣' },
+                ],
+            }
+        })
+
+        var vm = new Vue({
+            el: '#components3',
+            data: {
+                posts: [
+                    { id: 1, title: '我的 Vue 旅程' },
+                    { id: 2, title: '用 Vue 写博客' },
+                    { id: 3, title: 'Vue 如此有趣' },
+                ],
+                postFontSize: 1,
+                button: true
+            }
+        })
+
+        new Vue({
+            el: "#components4",
+            data: {
+                lovingVue: true
+            }
+        })
+
+        new Vue({
+            el: "#components"
+        })
+    </script>
+</body>
+</html>

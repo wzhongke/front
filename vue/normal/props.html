@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Props</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="example">
+        <blog-post post-title="hello!"></blog-post>
+        <!-- 动态属性，可以传递整个对象 -->
+        <blog v-bind:post-title="post"></blog>
+    </div>
+    <script>
+        Vue.component('blog-post', {
+            props: ['postTitle'],
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1)
+                }
+            },
+            template: `<h3>{{postTitle | capitalize}}</h3>`
+        })
+
+        Vue.component('blog', {
+            // 使用对象形式，对传递的数据进行验证
+            props: {
+                postTitle: [String, Object],
+                postContent: {
+                    type: String,
+                    required: false,
+                    default: 'content'
+                }
+            },
+            template: `<div><h3>{{postTitle}}</h3><p>{{postContent}}</p></div>`
+        })
+
+        new Vue({
+            el: '#example',
+            data: function () {
+                return {
+                    post: {
+                        title: 'post title',
+                        second: 'second'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+---
+title: Promise
+categories: ["javascript"]
+---
+

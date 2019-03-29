@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inline element</title>
+    <style>
+        .padding { width: 200px;resize: both}
+        .padding p {font-size: 15px; line-height: 1em;}
+        .padding p span {background: #FAA; padding-top: 10px; padding-bottom: 10px; padding-left: 10px;}
+    
+        .replace p {font-size: 15px; line-height: 18px;} 
+        .replace img {vertical-align: 50%;}
+    </style>
+</head>
+<body>
+    <div class="padding">
+        <p>文本中包含着一个span标签，<span>该span标签被给予了padding</span>，以及background，它的表现如下. padding-top 和padding-bottom 不影响行高，但是如果有背景色，就会出现这种情况</p>
+    </div>
+    <div class="replace">
+        <p>this is an replace element. <img src="../../images/盒模型.png" height="30" /></p>
+    </div>
+</body>
+</html>
